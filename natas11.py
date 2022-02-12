@@ -7,10 +7,10 @@ defdata = {"showpassword":"yes","bgcolor":"#ffffff"}
 keydata = "qw8J"
 textdata = json.dumps(defdata)
 outtext = ""
-d = []
 
 for i in range(len(textdata)):
-    m = [(ord(a)^ord(b)) for a,b in zip(textdata[i],keydata[i%len(keydata)])]
-    outtext += (chr(m[0]))
+    ti = textdata[i]
+    ki = keydata[i%len(keydata)]
+    outtext += chr(ord(ti)^ord(ki))
 #print(outtext)
 print(base64.b64encode(outtext.encode('ascii')))
